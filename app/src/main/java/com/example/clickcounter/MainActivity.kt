@@ -38,6 +38,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        textView.setOnLongClickListener {
+            szam = 0
+            textView.setText(szam.toString())
+            textView.setTextColor(Color.rgb(40, 40, 255))
+            return@setOnLongClickListener true
+        }
     }
 
     fun Init() {
