@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="30sp"
-        android:textColor="#22F"
+        android:textColor="#2828FF"
         android:layout_centerInParent="true"
         android:id="@+id/tv_szam"
         />
