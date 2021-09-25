@@ -50,14 +50,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
         outState.putInt("szam", szam)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        szam = savedInstanceState.getInt("szam")
+        val mentettSzam = savedInstanceState.getInt("szam")
+        szam = mentettSzam
+        editTextView()
     }
 
     fun checkIfPrime(num: Int): Boolean {
@@ -77,5 +79,6 @@ class MainActivity : AppCompatActivity() {
         textView.setText(szam.toString())
         buttonUp = findViewById(R.id.button_up)
         buttonDown = findViewById(R.id.button_down)
+        editTextView()
     }
 }
