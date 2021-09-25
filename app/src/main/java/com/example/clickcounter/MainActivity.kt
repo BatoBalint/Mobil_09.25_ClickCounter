@@ -3,6 +3,7 @@ package com.example.clickcounter
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.widget.Button
 import android.widget.TextView
 
@@ -20,30 +21,12 @@ class MainActivity : AppCompatActivity() {
 
         buttonUp.setOnClickListener {
             szam++
-            textView.setText(szam.toString())
-            if (checkIfPrime(szam)) {
-                textView.setTextColor(Color.rgb(255, 255, 255))
-            } else if (szam == 0) {
-                textView.setTextColor(Color.rgb(40, 40, 255))
-            } else if (szam < 0) {
-                textView.setTextColor(Color.rgb(255, 40, 40))
-            } else if (szam > 0) {
-                textView.setTextColor(Color.rgb(40, 255, 40))
-            }
+            editTextView()
         }
 
         buttonDown.setOnClickListener {
             szam--
-            textView.setText(szam.toString())
-            if (checkIfPrime(szam)) {
-                textView.setTextColor(Color.rgb(255, 255, 255))
-            } else if (szam == 0) {
-                textView.setTextColor(Color.rgb(40, 40, 255))
-            } else if (szam < 0) {
-                textView.setTextColor(Color.rgb(255, 40, 40))
-            } else if (szam > 0) {
-                textView.setTextColor(Color.rgb(40, 255, 40))
-            }
+            editTextView()
         }
 
         textView.setOnLongClickListener {
@@ -52,6 +35,29 @@ class MainActivity : AppCompatActivity() {
             textView.setTextColor(Color.rgb(40, 40, 255))
             return@setOnLongClickListener true
         }
+    }
+
+    fun editTextView() {
+        textView.setText(szam.toString())
+        if (checkIfPrime(szam)) {
+            textView.setTextColor(Color.rgb(255, 255, 255))
+        } else if (szam == 0) {
+            textView.setTextColor(Color.rgb(40, 40, 255))
+        } else if (szam < 0) {
+            textView.setTextColor(Color.rgb(255, 40, 40))
+        } else if (szam > 0) {
+            textView.setTextColor(Color.rgb(40, 255, 40))
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        outState.putInt("szam", szam)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        szam = savedInstanceState.getInt("szam")
     }
 
     fun checkIfPrime(num: Int): Boolean {
