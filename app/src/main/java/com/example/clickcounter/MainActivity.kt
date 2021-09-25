@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
 
     fun checkIfPrime(num: Int): Boolean {
         if (num < 2) return false
+        else if (num < 4) return true
         var i = num - 1
         var search = true
         while (i >= Math.floor(Math.sqrt(num.toDouble())) && search) {
