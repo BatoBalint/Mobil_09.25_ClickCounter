@@ -1,5 +1,6 @@
 package com.example.clickcounter
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -18,8 +19,25 @@ class MainActivity : AppCompatActivity() {
         Init()
 
         buttonUp.setOnClickListener {
-
+            szam++
+            textView.setText(szam.toString())
+            if (szam == 0) {
+                textView.setTextColor(Color.rgb(40, 40, 255))
+            } else if (szam > 0) {
+                textView.setTextColor(Color.rgb(40, 255, 40))
+            }
         }
+
+        buttonDown.setOnClickListener {
+            szam--
+            textView.setText(szam.toString())
+            if (szam == 0) {
+                textView.setTextColor(Color.rgb(40, 40, 255))
+            } else if (szam < 0) {
+                textView.setTextColor(Color.rgb(255, 40, 40))
+            }
+        }
+
     }
 
     fun Init() {
